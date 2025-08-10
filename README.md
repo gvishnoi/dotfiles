@@ -152,3 +152,10 @@ This will:
 - Set up Python, Node.js, Java
 - Install VS Code extensions
 - Provision Docker services
+
+
+---
+
+## 📚 Additional Documentation
+- [Local Development Services](docs/services.md)
+- [Troubleshooting Guide](docs/troubleshooting.md)
