@@ -1,8 +1,9 @@
-# Gaurav Vishnoi's macOS Development Setup
+# Setting Up a New Mac Machine | macOS Development Setup
 
-This repository contains my **macOS development environment configuration** — including shell setup, programming language managers, databases, cloud SDKs, IDE settings, and data science tools — all tracked in version control for a **tidy, reproducible setup**.
+This repository contains my **complete macOS development environment configuration** — including shell setup, language managers, databases, cloud SDKs, IDE settings, and data science tools — all tracked in version control for a **tidy, reproducible, and automated setup**.  
 
----
+It is designed so that with **one command**, a fresh Mac can be provisioned with all essential tools, configurations, and services required for my work across **AEM, Java, Python, microservices, cloud platforms, and data/ML projects**.
+
 
 ## 🚀 Initial Setup on a Fresh Mac
 
@@ -27,7 +28,6 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
----
 
 ## 📦 What’s Included
 
@@ -73,7 +73,6 @@ cd ~/dotfiles
 - **TensorFlow** (tensorflow-macos + tensorflow-metal)
 - Optional: pyarrow, polars, duckdb, SQLAlchemy
 
----
 
 ## 🔄 Reproducibility
 
@@ -99,7 +98,6 @@ make up    # start Postgres, pgAdmin, Redis
 make down  # stop services
 ```
 
----
 
 ## 📂 Repository Structure
 
@@ -117,7 +115,6 @@ make down  # stop services
   ├── README.md
 ```
 
----
 
 ## 📌 Notes
 - **Jupyter notebooks** live in `~/dev/learning/notebooks`
@@ -129,7 +126,6 @@ make down  # stop services
   - `databricks auth login`
 - `.env` files for services are **not committed** — use `.env.example` as a template
 
----
 
 ## 🏷 Versioning
 You can tag known-good states:
@@ -138,7 +134,6 @@ git tag v1.0
 git push origin main --tags
 ```
 
----
 
 ## ✅ Restore in One Command
 Once Homebrew is installed and dotfiles cloned:
@@ -154,8 +149,25 @@ This will:
 - Provision Docker services
 
 
----
+
+## 👤 Who This Is For
+This setup is designed for:
+- Developers working on **AEM (Adobe Experience Manager)** projects
+- **Java** and **Spring Boot** microservices
+- **Python** for data engineering, ML, and automation
+- **Cloud** integrations with AWS, Azure, GCP, and Databricks
+- Local development requiring **PostgreSQL**, **Redis**, and containerized services
+- Anyone who values a **version-controlled**, **reproducible**, and **tidy** macOS dev environment
+
+
+## 🚫 What’s Not Included
+- Licensing or installation of **paid software** (e.g., IntelliJ IDEA Ultimate, Adobe tools) — install separately
+- Sensitive configuration files (API keys, SSH keys, `.env` secrets) — templates are provided instead
+- Complex production cluster setups — this is focused on local development
+- Non-macOS systems — while many steps are portable, this script is optimized for Apple Silicon Macs
+
 
 ## 📚 Additional Documentation
 - [Local Development Services](docs/services.md)
 - [Troubleshooting Guide](docs/troubleshooting.md)
+- [Future Improvements](FUTURE_IMPROVEMENTS.md)
