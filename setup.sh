@@ -139,5 +139,25 @@ else
   echo "make not found; skipping doctor checks."
 fi
 
+
+# 12) Optional: install Kafka tools with user consent
+echo ""
+read -r -p "Install Kafka CLI tools (Apache Kafka + kcat)? [y/N]: " INSTALL_KAFKA
+if [[ "${INSTALL_KAFKA:-N}" =~ ^[Yy]$ ]]; then
+  echo "Installing Kafka CLI tools..."
+  if ! command -v kafka-topics >/dev/null 2>&1; then
+    brew install kafka || true
+  else
+    echo "Kafka CLI already present."
+  fi
+  if ! command -v kcat >/dev/null 2>&1; then
+    brew install kcat || true
+  else
+    echo "kcat already present."
+  fi
+else
+  echo "Skipping Kafka tools installation."
+fi
+
 echo ""
 echo "=== Setup complete! Please restart your terminal or run 'source ~/.zshrc' ==="
