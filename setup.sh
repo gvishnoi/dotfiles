@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "=== Gaurav Vishnoi's macOS Development Setup ==="
+echo "=== MacOS Development Setup ==="
 
 # 1) Ensure Homebrew is installed
 if ! command -v brew >/dev/null 2>&1; then
