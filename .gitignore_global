@@ -1,0 +1,10 @@
+.DS_Store
+._*
+Thumbs.db
+*.log
+.env
+.env.*
+.vscode/settings.json
+.idea/
+__pycache__/
+node_modules/

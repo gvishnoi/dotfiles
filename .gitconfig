@@ -1,0 +1,12 @@
+[user]
+  name = Gaurav Vishnoi
+  email = gaurav.vishnoi@gmail.com
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore_global
+[init]
+  defaultBranch = main
+[push]
+  default = current
+[pull]
+  rebase = false
