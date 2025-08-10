@@ -16,7 +16,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # 3) Install all Homebrew packages from Brewfile (if exists)
 if [ -f "$HOME/dotfiles/Brewfile" ]; then
-  echo "Installing Homebrew packages from Brewfile..."
+  echo "Installing Homebrew packages from Brewfile (includes CLI tools, Docker Desktop, VS Code, Postman, etc.)..."
   brew bundle --file="$HOME/dotfiles/Brewfile"
 else
   echo "No Brewfile found. Skipping."
@@ -92,11 +92,11 @@ if [ -f "$COMPOSE_FILE" ]; then
   echo ""
   read -r -p "Start local dev services now (Postgres, pgAdmin, Redis)? [y/N]: " START_SERVICES
   if [[ "${START_SERVICES:-N}" =~ ^[Yy]$ ]]; then
-    # Ensure Docker Desktop is running
+    # Ensure Docker CLI exists
     if ! command -v docker >/dev/null 2>&1; then
       echo "Docker CLI not found. Install Docker Desktop via Homebrew first."
     else
-      # Try to start Docker Desktop app (macOS)
+      # Try to start Docker Desktop (macOS) if daemon not ready
       if ! docker info >/dev/null 2>&1; then
         echo "Starting Docker Desktop..."
         open -a Docker || true
@@ -129,6 +129,14 @@ if [ -f "$COMPOSE_FILE" ]; then
   fi
 else
   echo "No services compose file found at $COMPOSE_FILE. Skipping service startup."
+fi
+
+# 11) Post-install health check (optional, non-fatal)
+echo "Running post-install checks (make doctor)..."
+if command -v make >/dev/null 2>&1; then
+  make -C "$HOME/dotfiles" doctor || true
+else
+  echo "make not found; skipping doctor checks."
 fi
 
 echo ""
