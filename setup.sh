@@ -140,24 +140,29 @@ else
 fi
 
 
-# 12) Optional: install Kafka tools with user consent
+# 12) Optional: install Kafka CLI tools
 echo ""
-read -r -p "Install Kafka CLI tools (Apache Kafka + kcat)? [y/N]: " INSTALL_KAFKA
+read -r -p "Install Kafka CLI tools (Apache Kafka) and kcat? [y/N]: " INSTALL_KAFKA
 if [[ "${INSTALL_KAFKA:-N}" =~ ^[Yy]$ ]]; then
-  echo "Installing Kafka CLI tools..."
-  if ! command -v kafka-topics >/dev/null 2>&1; then
-    brew install kafka || true
-  else
-    echo "Kafka CLI already present."
+  echo "Installing Kafka CLI..."
+  brew install kafka || true
+  echo "Installing kcat..."
+  brew install kcat || true
+
+  # Optionally copy Kafka docker-compose file if not present
+  KAFKA_COMPOSE_DIR="$HOME/dev/services"
+  KAFKA_COMPOSE_FILE="$KAFKA_COMPOSE_DIR/compose.kafka.yml"
+  if [[ ! -f "$KAFKA_COMPOSE_FILE" ]]; then
+    echo "Adding Kafka compose file to $KAFKA_COMPOSE_DIR"
+    mkdir -p "$KAFKA_COMPOSE_DIR"
+    cp ./dev-services-templates/compose.kafka.yml "$KAFKA_COMPOSE_FILE"
   fi
-  if ! command -v kcat >/dev/null 2>&1; then
-    brew install kcat || true
-  else
-    echo "kcat already present."
-  fi
+
+  echo "Kafka CLI and compose file installed."
 else
-  echo "Skipping Kafka tools installation."
+  echo "Skipping Kafka tools."
 fi
+
 
 echo ""
 echo "=== Setup complete! Please restart your terminal or run 'source ~/.zshrc' ==="

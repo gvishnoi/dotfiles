@@ -104,22 +104,22 @@ make down  # stop services
 - **Kubernetes**: kubectl, helm, k9s, stern
 - **IaC & Pipelines**: Terraform, OpenTofu, act
 - **Cloud CLIs**: AWS CLI, Azure CLI, Google Cloud SDK, Databricks CLI
-- **Kafka Tools (optional)**:
+- **Kafka Tools (optional)**: If you opted to install Kafka during setup, a `compose.kafka.yml` will be available in `~/dev/services`.
   - Apache Kafka CLI (`kafka-topics`, `kafka-console-producer`, `kafka-console-consumer`)
   - `kcat` (formerly kafkacat) for quick topic produce/consume tests
   - Optional GUI (Docker): `provectuslabs/kafka-ui`
 
 
-#### Kafka quickstart (local, CLI)
-```sh
-# Start a local Kafka (for quick tests) - prefer Docker-based stacks in projects
-# Kafka via brew installs scripts, but running a full broker locally is out of scope here.
-# Use Docker-based Kafka stacks (e.g., Confluent or Bitnami) in project repos.
+      #### Kafka quickstart (local, CLI)
+      ```sh
+      # Start a local Kafka (for quick tests) - prefer Docker-based stacks in projects
+      # Kafka via brew installs scripts, but running a full broker locally is out of scope here.
+      # Use Docker-based Kafka stacks (e.g., Confluent or Bitnami) in project repos.
 
-# Verify tools:
-kafka-topics --version
-kcat -V
-```
+      # Verify tools:
+      kafka-topics --version
+      kcat -V
+      ```
 
 
 ## 📂 Repository Structure

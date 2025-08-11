@@ -20,11 +20,15 @@ make up          # Start services
 make down        # Stop services
 make logs        # Follow service logs
 make nuke        # Stop and remove volumes (data will be lost)
+
+make kafka-up
+make kafka-down
+kcat -b localhost:9092 -L
 ```
 
 Or with raw Docker Compose:
 ```sh
-docker compose up -d
+docker compose -f compose.yml up -d
 docker compose down
 ```
 
